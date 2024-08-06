@@ -1,6 +1,7 @@
+# WORKING
+
 
 from langchain.llms import Ollama
-from langchain_openai import ChatOpenAI
 
 ollama_llm = Ollama(
     model="llama2",
