@@ -1,7 +1,4 @@
-
-
 # Ignore files related to API keys
 .env
 
 # Ignore PowerPoint slide files
-.pptx
