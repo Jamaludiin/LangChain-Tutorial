@@ -9,6 +9,7 @@ llm = ChatOpenAI(
     model="gpt-3.5-turbo",
 )
 
+
 response = llm.invoke("Write a poem about AI")
 
 print(response)
