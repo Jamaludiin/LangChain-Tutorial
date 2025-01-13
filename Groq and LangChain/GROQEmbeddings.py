@@ -40,10 +40,16 @@ def create_embeddings_demo():
     # Step 4: Split text into smaller chunks
     # This is important for processing long texts and getting more precise results
     text_splitter = CharacterTextSplitter(
-        chunk_size=1000,    # Each chunk will be ~1000 characters
-        chunk_overlap=200   # Overlap between chunks to maintain context
+        separator= " ",
+        chunk_size=20,    # Each chunk will be ~1000 characters
+        chunk_overlap=2   # Overlap between chunks to maintain context
     )
     texts = text_splitter.split_documents(documents)
+
+    print("\nSPLITED TEXT STARTS")
+    print(texts)
+    print("SPLITED TEXT ENDS")
+
 
     # Step 5: Create vector store
     # FAISS is an efficient similarity search library
