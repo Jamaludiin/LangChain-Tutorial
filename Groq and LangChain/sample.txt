@@ -1,0 +1,48 @@
+from langchain_groq import GroqEmbeddings
+from langchain.vectorstores import FAISS
+from langchain.document_loaders import TextLoader
+from langchain.text_splitter import CharacterTextSplitter
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
+
+def create_embeddings_demo():
+    # Initialize the GROQ embeddings
+    embeddings = GroqEmbeddings(
+        groq_api_key=os.getenv("GROQ_API_KEY")
+    )
+
+    # Load and prepare sample text
+    # Create a sample text file first
+    with open("sample.txt", "w") as f:
+        f.write("""This is a sample document about artificial intelligence.
+                AI is transforming many industries including healthcare and finance.
+                Machine learning is a subset of AI that focuses on training models with data.""")
+
+    # Load the document
+    loader = TextLoader("sample.txt")
+    documents = loader.load()
+
+    # Split text into chunks
+    text_splitter = CharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200
+    )
+    texts = text_splitter.split_documents(documents)
+
+    # Create vector store
+    db = FAISS.from_documents(texts, embeddings)
+
+    # Perform a similarity search
+    query = "What is machine learning?"
+    docs = db.similarity_search(query)
+
+    # Print results
+    print("\nSearch Results for:", query)
+    for doc in docs:
+        print("\nContent:", doc.page_content)
+
+if __name__ == "__main__":
+    create_embeddings_demo()
