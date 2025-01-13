@@ -8,7 +8,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain.llms import Ollama
 
 # Instantiate Model
-llm = ollama_llm = Ollama(
+llm = Ollama(
     model="llama2",
 )
 
