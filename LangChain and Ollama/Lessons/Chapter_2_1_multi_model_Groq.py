@@ -41,7 +41,7 @@ if available_models[0] not in available_models:
 
 try:
     llm = ChatGroq(
-        available_models[0],
+        model_name=available_models[0],  # Use 'model_name' instead of directly passing the model
         temperature=0.7,
         max_tokens=32767,
         timeout=10,
