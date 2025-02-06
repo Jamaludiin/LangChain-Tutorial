@@ -13,6 +13,7 @@ load_dotenv()
 
 
 groq_api_key = os.getenv('GROQ_API_KEY')
+
 llm = ChatGroq(
         model="llama-3.3-70b-versatile",
         temperature=0.7,
@@ -33,6 +34,8 @@ prompt = ChatPromptTemplate.from_messages(
 
 # Create LLM Chain
 chain = prompt | llm
+
+print("\n This the chain \n", chain, "\n")
 
 response = chain.invoke({"input": "happy"})
 print("\n")
