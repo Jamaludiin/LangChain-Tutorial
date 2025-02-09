@@ -35,6 +35,7 @@ class SimpleChatLoader:
 
 
 In this case, ChatSession holds the messages returned by the loader (even though it's returned as a dictionary, in a more complex implementation, you would directly interact with instances of ChatSession).
+```
 
 ## 2. BaseChatLoader
 
