@@ -44,11 +44,13 @@ In this case, ChatSession holds the messages returned by the loader (even though
  - **Usage**: It is meant to be subclassed and customized for specific use cases, such as fetching data from a database, a file system, or an API.
 
  - **Key Points**:
-    Lazy loading: The chat data is loaded only when needed (e.g., when iterating through the data). This is efficient for large datasets.
-    Eager loading: All chat sessions are loaded into memory at once, which is suitable for smaller datasets or when you need all data immediately.
-    The BaseChatLoader provides a template for loading chat sessions, and you would typically implement the actual loading logic (e.g., reading from a database or API) in subclasses.
+Lazy loading: The chat data is loaded only when needed (e.g., when iterating through the data). This is efficient for large datasets.
+
+Eager loading: All chat sessions are loaded into memory at once, which is suitable for smaller datasets or when you need all data immediately.
+
+The BaseChatLoader provides a template for loading chat sessions, and you would typically implement the actual loading logic (e.g., reading from a database or API) in subclasses.
    
-Example Code
+## Example Code
 ```
 class CustomChatLoader(BaseChatLoader):
     def __init__(self, session_data):
@@ -62,6 +64,7 @@ class CustomChatLoader(BaseChatLoader):
         return [ChatSession(messages=session) for session in self.session_data]
 
 ```
+
 Here, CustomChatLoader subclasses BaseChatLoader and implements the lazy_load() and load() methods to define how the chat data is fetched and returned.
 
 ## Summary of Differences:
@@ -75,7 +78,9 @@ Here, CustomChatLoader subclasses BaseChatLoader and implements the lazy_load() 
 | **Example Usage**     | Directly used to store messages in a session       | Subclassed and extended to define how chat sessions are loaded |
 
 
-Key Takeaways:
+## Key Takeaways:
+
 ChatSession: You use it to hold and manipulate chat data. It's the data structure that represents individual chat sessions.
+
 BaseChatLoader: You extend it to define how to load chat data (either lazily or eagerly). It serves as a framework for fetching chat data from various sources.
 
