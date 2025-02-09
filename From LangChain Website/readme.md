@@ -47,6 +47,7 @@ In this case, ChatSession holds the messages returned by the loader (even though
         The BaseChatLoader provides a template for loading chat sessions, and you would typically implement the actual loading logic (e.g., reading from a database or API) in subclasses.
    
 Example Code
+```
 class CustomChatLoader(BaseChatLoader):
     def __init__(self, session_data):
         self.session_data = session_data  # List of chat history
@@ -58,6 +59,7 @@ class CustomChatLoader(BaseChatLoader):
     def load(self):
         return [ChatSession(messages=session) for session in self.session_data]
 
+```
 Here, CustomChatLoader subclasses BaseChatLoader and implements the lazy_load() and load() methods to define how the chat data is fetched and returned.
 
 ## Summary of Differences:
