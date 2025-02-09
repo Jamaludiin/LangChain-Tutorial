@@ -39,12 +39,14 @@ In this case, ChatSession holds the messages returned by the loader (even though
 
 ## 2. BaseChatLoader
 
-    **Purpose**: BaseChatLoader is an abstract base class designed to facilitate loading chat sessions into memory. It defines methods for "lazy loading" and "eager loading" chat sessions. In essence, it is responsible for the mechanism that fetches or loads the chat sessions, either gradually (lazy) or all at once (eager).
-    Usage: It is meant to be subclassed and customized for specific use cases, such as fetching data from a database, a file system, or an API.
-    Key Points:
-        Lazy loading: The chat data is loaded only when needed (e.g., when iterating through the data). This is efficient for large datasets.
-        Eager loading: All chat sessions are loaded into memory at once, which is suitable for smaller datasets or when you need all data immediately.
-        The BaseChatLoader provides a template for loading chat sessions, and you would typically implement the actual loading logic (e.g., reading from a database or API) in subclasses.
+ - **Purpose**:  BaseChatLoader is an abstract base class designed to facilitate loading chat sessions into memory. It defines methods for "lazy loading" and "eager loading" chat sessions. In essence, it is responsible for the mechanism that fetches or loads the chat sessions, either gradually (lazy) or all at once (eager).
+
+ - **Usage**: It is meant to be subclassed and customized for specific use cases, such as fetching data from a database, a file system, or an API.
+
+ - **Key Points**:
+    Lazy loading: The chat data is loaded only when needed (e.g., when iterating through the data). This is efficient for large datasets.
+    Eager loading: All chat sessions are loaded into memory at once, which is suitable for smaller datasets or when you need all data immediately.
+    The BaseChatLoader provides a template for loading chat sessions, and you would typically implement the actual loading logic (e.g., reading from a database or API) in subclasses.
    
 Example Code
 ```
