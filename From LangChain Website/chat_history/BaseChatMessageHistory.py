@@ -80,3 +80,19 @@ print(resp1["text"])
 q2 = {"input": "What is my name?"}
 resp2 = chain.invoke(q2)
 print(resp2["text"])
+
+
+
+"""
+Explanation:
+    InMemoryChatMessageHistory:
+    Extends BaseChatMessageHistory.
+    Stores messages in a list (self._messages).
+    Implements add_messages() to store a batch of messages.
+    Implements clear() to reset the conversation history.
+    ConversationBufferMemory uses this custom history class.
+    The LLMChain remembers previous interactions.
+
+This example demonstrates how to store, retrieve, and use chat history 
+without an external database, similar to UpstashRedisChatMessageHistory. Let me know if you need further improvements! 🚀
+"""
