@@ -1,6 +1,5 @@
-# This script demonstrates how to get an AI-generated response, chunk the message, and explore its attributes. 🚀
 # working
-
+# This version properly generates an HTML output using Python's built-in html module.
 import os
 from groq import Groq
 from langchain_groq import ChatGroq
@@ -50,17 +49,31 @@ print("🟢 Response Metadata:", ai_message_chunk.response_metadata)
 print("\n🔹 Pretty Print:")
 ai_message_chunk.pretty_print()
 
-# Using pretty_repr() for HTML output
-print("\n🔹 Pretty Representation (HTML Format):")
-print(ai_message_chunk.pretty_repr(html=True))
-
-
-
-
+# Using real HTML formatting
+html_output = f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Message Chunk</title>
+    <style>
+        body {{ font-family: Arial, sans-serif; margin: 20px; }}
+        .container {{ border: 2px solid #333; padding: 15px; border-radius: 8px; background-color: #f9f9f9; }}
+        h2 {{ color: #007bff; }}
+        p {{ font-size: 16px; }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>AIMessageChunk Message</h2>
+        <p><strong>Name:</strong> {ai_message_chunk.name}</p>
+        <p><strong>Content:</strong> {ai_message_chunk.content}</p>
+        <p><strong>ID:</strong> {ai_message_chunk.id}</p>
+        <p><strong>Response Metadata:</strong> {ai_message_chunk.response_metadata}</p>
+    </div>
+</body>
+</html>
 """
-📝 What This Example Covers
-✅ Uses ChatGroq to generate a response
-✅ Creates an AIMessageChunk instance
-✅ Demonstrates attributes like content, response_metadata, and pretty_print()
-✅ Formatted output for clarity
-"""
+
+# Printing HTML output
+print("\n🔹 Proper HTML Formatted Output:")
+print(html_output)
