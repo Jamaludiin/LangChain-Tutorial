@@ -11,7 +11,7 @@ load_dotenv()
 # Initialize the chat model
 chat = ChatGroq(
     api_key=os.getenv('GROQ_API_KEY'),
-    model="llama2-70b-4096"
+    model="llama-3.3-70b-versatile"
 )
 
 # Create messages
@@ -21,7 +21,9 @@ messages = [
 
 # Get response
 response = chat.invoke(messages)
+print("\n")
 print(response.content)
+print("\n")
 
 # Add the AI's response to the message history
 messages.append(response)
@@ -30,3 +32,4 @@ messages.append(response)
 messages.append(HumanMessage(content="What is its population?"))
 response = chat.invoke(messages)
 print(response.content)
+print("\n")
