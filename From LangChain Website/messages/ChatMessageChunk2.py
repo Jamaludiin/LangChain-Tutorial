@@ -30,13 +30,20 @@ response = llm.invoke([user_message])
 # Simulate receiving a message chunk from AI
 message_chunk = ChatMessageChunk(
     content=response.content,
-    role="ai"
+    role="ai",
+    id=123,
+    name="Apple IoS"
 )
 
 # Print the message chunk details
-print("Message Chunk Content:", message_chunk.content)
-print("Message Role:", message_chunk.role)
+print("Message Chunk Content:", message_chunk.content, "\n")
+print("Message Role:", message_chunk.role, "\n")
+print("Message ID:", message_chunk.id, "\n")
+print("Message Name:", message_chunk.name, "\n")
 
+
+
+print("---------------------------------------")
 # Use AIMessage to represent a full AI response
 ai_message = AIMessage(
     content=response.content,
@@ -44,5 +51,5 @@ ai_message = AIMessage(
 )
 
 # Print AI message details
-print("AI Message Content:", ai_message.content)
-print("Additional Info:", ai_message.additional_kwargs)
+print("AI Message Content:", ai_message.content, "\n")
+print("Additional Info:", ai_message.additional_kwargs, "\n")
