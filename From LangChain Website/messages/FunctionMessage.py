@@ -1,4 +1,4 @@
-
+# working
 import os
 from groq import Groq
 from langchain_groq import ChatGroq
@@ -29,3 +29,12 @@ function_result = FunctionMessage(
 # Print function execution result
 print("Function Name:", function_result.name)
 print("Function Result:", function_result.content)
+
+
+"""
+The function get_weather_info is not actually declared in the example. In the context of FunctionMessage, the name parameter is just a label that indicates the name of the function that was executed.
+
+If you want to actually define and call a function named get_weather_info, here’s how you can do it:
+
+
+"""
