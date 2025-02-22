@@ -35,3 +35,11 @@ response = llm.invoke(messages)
 
 # Print response
 print(response.content)  # Expected output: "My name is Bob. How can I assist you today?"
+
+
+print("\n---------------------------------")
+print(messages[0].content)  # Correct  # Get text content of the SystemMessage
+
+print("\n---------------------------------")
+
+print(messages[0].pretty_repr())  # Pretty print the SystemMessage
