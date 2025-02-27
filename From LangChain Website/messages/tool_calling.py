@@ -60,3 +60,12 @@ for tool_call in tool_calls:
 
 # Print the final results
 print("Final Results:", results)
+
+
+print("also like this\n")
+
+print("Final Results:", results.values())
+print("also like this\n")
+
+# Print results in a single row format
+print(" ".join(map(str, results.values())))
