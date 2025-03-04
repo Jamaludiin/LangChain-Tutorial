@@ -1,6 +1,6 @@
 # `merge_content` in LangChain
 
-Great question! The `merge_content` method in LangChain is useful because it provides **structured content merging** that is specifically designed for **AI message handling**. Here's why it's different from built-in Python methods like `+`, `.extend()`, or `join()`:
+The `merge_content` method in LangChain is useful because it provides **structured content merging** that is specifically designed for **AI message handling**. Here's why it's different from built-in Python methods like `+`, `.extend()`, or `join()`:
 
 ## 🔹 How `merge_content` is Different from Python Built-ins
 
