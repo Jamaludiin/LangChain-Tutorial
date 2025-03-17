@@ -38,8 +38,19 @@ response = model_with_tools.invoke(user_input)
 print(response)
 print("\n content")
 print(response.content)
+print("Tool Calls:", response.tool_calls)
+tool_result = response.tool_calls
 
+results = {}
+print("Tool results:")
 
+for tool_call in tool_result:
+    tool_name = tool_call["name"]
+    args = tool_call["args"]
+
+    if tool_name == "multiply":
+        results[tool_call["id"]] = multiply.invoke(args)  # Fix: use .invoke()
+        print("\nmultiply Results:", results, "\n")
 
 
 """

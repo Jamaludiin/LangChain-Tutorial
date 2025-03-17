@@ -55,8 +55,10 @@ for tool_call in tool_calls:
 
     if tool_name == "add":
         results[tool_call["id"]] = add.invoke(args)  # Fix: use .invoke()
+        print("\nadd Results:", results, "\n")
     elif tool_name == "multiply":
         results[tool_call["id"]] = multiply.invoke(args)  # Fix: use .invoke()
+        print("multiply Results:", results, "\n")
 
 # Print the final results
 print("Final Results:", results)

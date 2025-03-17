@@ -41,15 +41,6 @@ print("\nThis is the Tool Calls\n")
 print("AI Requesting Tool Call:", ai_response.tool_calls)
 
 
-print("\nThis is the AI or the LLM Calls\n")
-
-# Actually send a message to the AI
-response = llm.invoke("What is 5 + 10?")
-
-print("AI Response:", response.content)
-
-
-
 """
  this simulates an AI response but does not actually communicate with an AI or LLM.
 
@@ -61,3 +52,10 @@ Does This Communicate with the AI?
     🚫 No – The script only creates objects (ToolCall, AIMessage) and prints them.
     ✅ Yes (if modified) – If you later use llm.invoke() or similar, it would send a request to the AI.
 """
+
+print("\nThis is the AI or the LLM Calls\n")
+
+# Actually send a message to the AI
+response = llm.invoke("What is 5 + 10?")
+
+print("AI Response:", response.content)
