@@ -18,9 +18,9 @@ llm = ChatGroq(
 )
 
 # Define a simple output parser with the parse_result method
-class SimpleResponseParser(BaseLLMOutputParser):
+"""class SimpleResponseParser(BaseLLMOutputParser):
     def parse_result(self, result: list, *, partial: bool = False):
-        """Synchronously process the results."""
+        #Synchronously process the results.
         if not result:
             return "No response generated."
         
@@ -31,13 +31,31 @@ class SimpleResponseParser(BaseLLMOutputParser):
         if isinstance(result[0], dict) and 'text' in result[0]:  # If it's a list of dictionaries
             return f"Synchronous result: {result[0]['text'].strip()}"
         else:
-            return "Unexpected response format."
+            return "Unexpected response format."""
 
+# new way, Since ChatGeneration objects have a text attribute, we need to correctly extract the text. Try modifying the parse_result method like this:
+# Yes, the purpose of this class and its parse_result method is to extract and structure the output of the LLM's response in a desired format.
+class SimpleResponseParser(BaseLLMOutputParser):
+    def parse_result(self, result: list, *, partial: bool = False):
+        """Synchronously process the results."""
+        if not result:
+            return "No response generated."
+        
+        # Print the structure of the result for debugging
+        print("Response structure:", result)
+        
+        # Extracting text from ChatGeneration objects
+        if isinstance(result[0], list) and hasattr(result[0][0], 'text'):
+            return f"Synchronous result: {result[0][0].text.strip()}"
+        else:
+            return "Unexpected response format."
+        
 def main():
-    prompt = "Describe the impact of artificial intelligence on society."
+    prompt = "Describe the impact of artificial intelligence on society in less than 100 words."
     messages = [HumanMessage(content=prompt)]  # Wrap the prompt inside HumanMessage
 
     # Send the message to the Groq model and get the response synchronously
+ 
     response = llm.generate([messages])  # No need to await, it's a synchronous method
 
     # Parsing the response synchronously
